@@ -32,10 +32,10 @@ using System;
 
 namespace NClassifier.Bayesian
 {
-	/// <summary>
-	/// Represents the probability of a particular word.
-	/// </summary>
-	[Serializable]
+    /// <summary>
+    /// Represents the probability of a particular word.
+    /// </summary>
+    [Serializable]
 	public class WordProbability : IComparable
 	{
 		static int UNDEFINED = -1;
@@ -67,7 +67,9 @@ namespace NClassifier.Bayesian
 				return _matchingCount; 
 			} 
 			set 
-			{ 
+			{
+                if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(MatchingCount), "Value must be non-negative.");
 				_matchingCount = value; 
 				CalculateProbability();
 			} 
@@ -82,7 +84,8 @@ namespace NClassifier.Bayesian
 				return _nonMatchingCount;
 			} 
 			set 
-			{ 
+			{ if (value < 0)
+                    throw new ArgumentOutOfRangeException(nameof(MatchingCount), "Value must be non-negative.");
 				_nonMatchingCount = value; 
 				CalculateProbability();
 			} 
@@ -114,13 +117,13 @@ namespace NClassifier.Bayesian
 
 		public void RegisterMatch()
 		{
-			MatchingCount++;
+			var test = checked(MatchingCount++);
 			CalculateProbability();
 		}
 
 		public void RegisterNonMatch()
 		{
-			NonMatchingCount++;
+			var test = checked(NonMatchingCount++);
 			CalculateProbability();
 		}
 
@@ -156,7 +159,7 @@ namespace NClassifier.Bayesian
 				return 0;
 		}
 
-		public string ToString()
+		public override string ToString()
 		{
 			return GetType().ToString() + "Word" + Word + "Probability" + Probability + "MatchingCount" + MatchingCount + "NonMatchingCount" + NonMatchingCount;
 		}

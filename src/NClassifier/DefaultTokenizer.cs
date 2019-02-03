@@ -33,7 +33,7 @@ using System.Text.RegularExpressions;
 
 namespace NClassifier
 {
-	public class DefaultTokenizer : ITokenizer
+    public class DefaultTokenizer : ITokenizer
 	{
 		/// <summary>
 		/// Use a "\W" (non-word character) regex to split the string passed in to classify
@@ -82,7 +82,7 @@ namespace NClassifier
 
 		public DefaultTokenizer(string regularExpression)
 		{
-			_customTokenizerRegExp = regularExpression;
+			_customTokenizerRegExp = regularExpression ?? throw new ArgumentNullException(nameof(regularExpression));
 		}
 		#endregion
 
