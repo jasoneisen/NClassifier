@@ -34,16 +34,16 @@ using NClassifier.Bayesian;
 
 namespace NClassifier.Tests.Bayesian
 {
-	[TestFixture]
+    [TestFixture]
 	public class SimpleWordsDataSourceTest : AbstractWordsDataSourceSupport
 	{
-		[TestFixtureSetUp]
+		[SetUp]
 		protected void Setup()
 		{
 			wordsDataSource = new SimpleWordsDataSource();
 		}
 
-		[TestFixtureTearDown]
+		[TearDown]
 		protected void TearDown()
 		{
 			wordsDataSource = null;

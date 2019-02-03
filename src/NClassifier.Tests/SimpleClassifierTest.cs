@@ -38,13 +38,13 @@ namespace NClassifier.Tests
 	{
 		SimpleClassifier _classifier = null;
 
-		[TestFixtureSetUp]
+		[SetUp]
 		protected void Setup()
 		{
 			_classifier = new SimpleClassifier();
 		}
 
-		[TestFixtureTearDown]
+		[TearDown]
 		public void TearDown()
 		{
 			_classifier = null;

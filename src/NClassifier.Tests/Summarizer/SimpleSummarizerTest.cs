@@ -39,13 +39,13 @@ namespace NClassifier.Tests.Summarizer
 	{
 		SimpleSummarizer summarizer = null;
 
-		[TestFixtureSetUp]
+		[SetUp]
 		public void Setup()
 		{
 			summarizer = new SimpleSummarizer();
 		}
 
-		[TestFixtureTearDown]
+		[TearDown]
 		public void TearDown()
 		{
 			summarizer = null;

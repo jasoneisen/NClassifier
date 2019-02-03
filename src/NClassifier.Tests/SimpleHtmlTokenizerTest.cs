@@ -38,13 +38,13 @@ namespace NClassifier.Tests
 	{
 		SimpleHtmlTokenizer tokenizer;
 
-		[TestFixtureSetUp]
+		[SetUp]
 		protected void Setup()
 		{
 			tokenizer = new SimpleHtmlTokenizer();
 		}
 
-		[TestFixtureTearDown]
+		[TearDown]
 		protected void TearDown()
 		{
 			tokenizer = null;
